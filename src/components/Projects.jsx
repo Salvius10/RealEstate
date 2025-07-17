@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {assets, projectsData} from '../assets/assets'
+import { motion } from "framer-motion"
 const Projects = () => {
     const [currentIndex,setCurrentIndex]=useState(0);
     const [cardsToShow,setCardsToShow]=useState(1);
@@ -23,7 +24,12 @@ const Projects = () => {
         setCurrentIndex((prevIndex)=>prevIndex===0?projectsData.length-1:prevIndex-1)
     }
   return (
-    <div className='container mx-auto py-4 pt-20 px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden' id='Projects'>
+    <motion.div
+    initial={{opacity:0,x:-200}}
+        transition={{duration:1.5}}
+        whileInView={{opacity:1,x:0}}
+        viewport={{once:true}}
+    className='container mx-auto py-4 pt-20 px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden' id='Projects'>
       <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>Projects <span className='underline underline-offset-4 decortion-1 under font-light'>Completed</span></h1>
       <p className='text-center text-gray-500 mb-8 ma-w-80 mx-auto'>Crafting Spaces, Building Legacie-Explore Our Portfolio</p>
       <div className='flex justidy-end items-center mb-8'>
@@ -54,7 +60,7 @@ const Projects = () => {
             ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
